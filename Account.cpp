@@ -20,7 +20,7 @@ float Account::get_balance() const
     return m_balance;
 }
 
-void Account::income(float money)
+void Account::deposit(float money)
 {
     m_balance += money;
 }

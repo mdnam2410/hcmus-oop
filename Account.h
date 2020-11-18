@@ -3,7 +3,7 @@
 
 class Account
 {
-private:
+protected:
     float m_balance;
 
 public:
