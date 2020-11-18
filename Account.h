@@ -4,20 +4,20 @@
 class Account
 {
 protected:
-    float m_balance;
+    double m_balance;
 
 public:
     Account();
 
-    Account(float initial_balance);
+    Account(double initial_balance);
 
     Account(const Account& acc);
 
-    float get_balance() const;
+    double get_balance() const;
 
-    void deposit(float money);
+    void deposit(double money);
 
-    bool withdraw(float money);
+    bool withdraw(double money);
 };
 
 #endif
