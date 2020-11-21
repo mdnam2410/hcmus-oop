@@ -24,7 +24,7 @@ void FuelTank::fill(double fuel)
         m_fuel = m_max_capacity;
 }
 
-void FuelTank::refill()
+void FuelTank::fill()
 {
     m_fuel = m_max_capacity;
 }
@@ -41,7 +41,7 @@ bool FuelTank::out_of_fuel() const
     return m_fuel == 0.0;
 }
 
-double FuelTank::fuel_left() const
+double FuelTank::fuel_remaining() const
 {
     return m_fuel;
 }

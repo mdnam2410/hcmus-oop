@@ -16,15 +16,21 @@ public:
 
     FuelTank(const FuelTank& other);
 
+    /**
+     * Increase the tank up to maximum capacity by the amount of fuel specified
+     */
     void fill(double fuel);
 
-    void refill();
+    /**
+     * Refill the fuel tank to its full
+     */
+    void fill();
 
     void use(double fuel);
 
     bool out_of_fuel() const;
 
-    double fuel_left() const;
+    double fuel_remaining() const;
 };
 
 #endif
