@@ -9,8 +9,10 @@ private:
     // In months
     int m_term_duration;
 
+    // Month elapsed in the cycle
     int m_month_elapsed;
 
+    int m_month_since_first_deposit;
 
     // Per month
     double m_rate;
@@ -20,7 +22,7 @@ public:
 
     /**
      * @param initial_balance The amount of money initially deposited
-     * @param term The period of time based on which the interest is calculated
+     * @param term Term duration (by month)
      * @param rate The interest rate per annum (per year)
      */ 
     TimeDeposit(double initial_balance, int term, double rate);
@@ -28,11 +30,6 @@ public:
     TimeDeposit(const TimeDeposit& other);
 
     void info() const;
-
-    /**
-     * @return The current balance (initial balance + interest gain)
-     */ 
-    double current_balance() const;
 
     /**
      * @return Update the initial balance to use for the new cycle

@@ -18,27 +18,22 @@ TimeDeposit::TimeDeposit(double initial_balance, int term, double rate) : Accoun
 
 void TimeDeposit::info() const
 {
-    std::cout << "Term duration: " << m_term_duration << '\n';
-    std::cout << "Month: " << m_month_elapsed << '\n';
-    std::cout << "Rate: " << m_rate << '\n';
-    std::cout << "Current balance: " << current_balance() << '\n';
-}
-
-double TimeDeposit::current_balance() const
-{
-    int number_of_terms = m_month_elapsed / m_term_duration;
-    return m_balance * std::pow(1.0 + m_rate, number_of_terms * m_term_duration);
+    std::cout << "Term duration: " << m_term_duration << " months\n";
+    std::cout << "Month since first deposit: " << m_month_since_first_deposit << '\n';
+    std::cout << "Month until the next cycle: " << m_term_duration - m_month_elapsed << '\n';
+    std::cout << "Rate: " << m_rate * 12 << " % per year (" << m_rate << " % per month)\n";
+    std::cout << "Current balance: " << m_balance << '\n';
 }
 
 void TimeDeposit::deposit(double money)
 {
-    m_balance = (current_balance() + money);
+    m_balance = (m_balance + money);
     m_month_elapsed = 0;
 }
 
 bool TimeDeposit::withdraw(double money)
 {
-    double cbalance = current_balance();
+    double cbalance = m_balance;
     if (money > cbalance)
         return false;
     
@@ -50,5 +45,13 @@ bool TimeDeposit::withdraw(double money)
 void TimeDeposit::increase_month(int inc)
 {
     m_month_elapsed += inc;
+    m_month_since_first_deposit += inc;
+    update_balance();
 }
 
+void TimeDeposit::update_balance()
+{
+    int number_of_terms = m_month_elapsed / m_term_duration;
+    m_month_elapsed %= m_term_duration;
+    m_balance *= std::pow(1.0 + m_rate, number_of_terms * m_term_duration);
+}
