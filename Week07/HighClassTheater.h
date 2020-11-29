@@ -19,8 +19,10 @@ public:
 
     ~HighClassTheater();
 
+    /// Return the price of the ticket
     double priceAt(int row, int seat) const;
 
+    /// Return the total revenue in selling tickets
     double totalRevenue() const;
 };
 

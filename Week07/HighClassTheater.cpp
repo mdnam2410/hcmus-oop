@@ -13,9 +13,8 @@ HighClassTheater::HighClassTheater(int rows, int seatsPerRow, double basePrice,
     : Theater(rows, seatsPerRow, basePrice, priceReduction)
 {
     m_discountRate = discountRate;
-    // auto now = time(nullptr);
-    // m_isThursday = (std::localtime(&now)->tm_wday == 4);
-    m_isThursday = true;
+    auto now = time(nullptr);
+    m_isThursday = (std::localtime(&now)->tm_wday == 4);
 }
 
 HighClassTheater::HighClassTheater(const HighClassTheater& other)
